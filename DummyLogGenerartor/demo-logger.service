@@ -1,0 +1,17 @@
+[Unit]
+Description=Demo Log Generator
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/demo-logger/venv/bin/python /opt/demo-logger/logger.py
+WorkingDirectory=/opt/demo-logger
+User=root
+Restart=always
+RestartSec=1
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
